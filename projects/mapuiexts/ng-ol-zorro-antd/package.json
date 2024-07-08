@@ -1,0 +1,14 @@
+{
+  "name": "@mapuiexts/ng-ol-zorro-antd",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^18.0.0",
+    "@angular/core": "^18.0.0",
+    "ol": "^9.2.4",
+    "ng-zorro-antd": "^18.0.1"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
