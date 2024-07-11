@@ -1,5 +1,24 @@
-<nz-space style="height: 90vh; width: 100%">
-  <nolz-lyr-tree [map]="map" style="height: 100%; width: 30%" />
-  <nolz-map [map]="map" style="height: 100%; width: 70%;"></nolz-map>
-</nz-space>
- 
+<nz-layout style="height: 100%; width: 100%">
+  <nz-header style="background-color: gray">
+    <nzol-lyr-tree-button [map]="map"></nzol-lyr-tree-button>
+  </nz-header>
+  <nz-layout>
+    <nz-sider
+      nzWidth="30%"
+      nzCollapsible
+      [nzCollapsedWidth]="0"
+      nzTheme="light"
+    >
+      <nolz-lyr-tree [map]="map" />
+    </nz-sider>
+    <nz-content>
+      <nolz-map [map]="map">
+        <nolz-map-controls>
+          <div [map]="map" [nolzMapControl]="{style: 'top: 0.5em; left: 2.5em; opacity: 0.5;'}">
+            <nzol-lyr-tree-button [map]="map" />
+          </div>
+      </nolz-map-controls>
+      </nolz-map>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

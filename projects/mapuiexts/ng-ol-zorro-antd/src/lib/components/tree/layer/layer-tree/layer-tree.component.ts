@@ -10,47 +10,14 @@ import LayerGroup from 'ol/layer/Group';
 import BaseLayer from 'ol/layer/Base';
 import { getUid } from 'ol/util';
 
-const testNodes: NzTreeNodeOptions[] = [
-  {
-    title: 'parent 1',
-    key: '100',
-    layer: 0,
-    children: [
-      {
-        title: 'parent 1-0',
-        key: '1001',
-        disabled: true,
-        layer: 1,
-        children: [
-          {
-            title: 'leaf 1-0-0',
-            key: '10010',
-            disableCheckbox: true,
-            isLeaf: true,
-          },
-          { title: 'leaf 1-0-1', key: '10011', isLeaf: true },
-        ],
-      },
-      {
-        title: 'parent 1-1',
-        key: '1002',
-        children: [
-          { title: 'leaf 1-1-0', key: '10020', isLeaf: true },
-          { title: 'leaf 1-1-1', key: '10021', isLeaf: true, layer: 2 },
-        ],
-      },
-    ],
-  },
-];
-
 @Component({
-  selector: 'nolz-lyr-tree',
+  selector: 'nolz-lyr-tree:not(p)',
   standalone: true,
   imports: [NzTreeModule],
   templateUrl: './layer-tree.component.html',
   styleUrl: './layer-tree.component.css',
 })
-export class LayerTreeComponent implements OnInit {
+export class NolzLayerTreeComponent implements OnInit {
   private _layerGroup?: LayerGroup;
   nodes: NzTreeNodeOptions[] = [];
   @ViewChild('nzTreeComponent', { static: false })
@@ -71,9 +38,7 @@ export class LayerTreeComponent implements OnInit {
   defaultSelectedKeys = ['10010'];
   defaultExpandedKeys = ['100', '1001'];
 
-  constructor() {
-    console.log('map', this.map);
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.layerGroup = this.map.getLayerGroup();
@@ -141,46 +106,41 @@ export class LayerTreeComponent implements OnInit {
   }
 
   private setLayerVisibility(layer: BaseLayer, visible: boolean) {
-    layer.setVisible(visible);
     if (layer instanceof LayerGroup) {
-      layer.getLayers().forEach((childLayer) =>
-        this.setLayerVisibility(childLayer, visible)
-      );
+      layer.setVisible(true);
+      layer
+        .getLayers()
+        .forEach((childLayer) => this.setLayerVisibility(childLayer, visible));
+    } else {
+      layer.setVisible(visible);
     }
   }
 
-  //nodes = testNodes;
 
   nzClick(event: NzFormatEmitEvent): void {
-    console.log(event);
+    //console.log(event);
   }
 
   nzCheck(event: NzFormatEmitEvent): void {
-    console.log('event', event.node?.isChecked, event.keys, event.checkedKeys);
-    console.log('checked node list', this.nzTreeComponent.getCheckedNodeList());
-    console.log('layer', event.node?.origin['layer']);
     const checked = event.node?.isChecked || false;
     const layer = event.node?.origin['layer'];
     if (layer) {
       this.setLayerVisibility(layer, checked);
     }
-
   }
 
   // nzSelectedKeys change
   nzSelect(keys: string[]): void {
-    console.log(keys, this.nzTreeComponent.getSelectedNodeList());
+    //console.log(keys, this.nzTreeComponent.getSelectedNodeList());
   }
 
   ngAfterViewInit(): void {
-    // get node by key: '10011'
-    console.log(this.nzTreeComponent.getTreeNodeByKey('10011'));
     // use tree methods
-    console.log(
-      this.nzTreeComponent.getTreeNodes(),
-      this.nzTreeComponent.getCheckedNodeList(),
-      this.nzTreeComponent.getSelectedNodeList(),
-      this.nzTreeComponent.getExpandedNodeList()
-    );
+    // console.log(
+    //   this.nzTreeComponent.getTreeNodes(),
+    //   this.nzTreeComponent.getCheckedNodeList(),
+    //   this.nzTreeComponent.getSelectedNodeList(),
+    //   this.nzTreeComponent.getExpandedNodeList()
+    // );
   }
 }

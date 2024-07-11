@@ -1,11 +1,29 @@
 {
   "name": "@mapuiexts/ng-ol-zorro-antd",
-  "version": "0.0.1",
+  "homepage": "https://github.com/mapuiexts/NG-OL-ZORRO",
+  "version": "0.0.2",
+  "description": "Angular UI Component Library based on OpenLayers and Zorro Ant Design",
+  "keywords": [
+    "maps",
+    "gis",
+    "openLayers",
+    "angular",
+    "zorro",
+    "ng-zorro-antd",
+    "ng-zorro",
+    "antd",
+    "ant-design"
+  ],
+  "author": "Paulo Aragao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mapuiexts/NG-OL-ZORRO/issues"
+  },
   "peerDependencies": {
-    "@angular/common": "^18.0.0",
-    "@angular/core": "^18.0.0",
-    "ol": "^9.2.4",
-    "ng-zorro-antd": "^18.0.1"
+    "@angular/common": ">=18.0.0",
+    "@angular/core": ">=18.0.0",
+    "ol": ">=9.2.4",
+    "ng-zorro-antd": ">=18.0.1"
   },
   "dependencies": {
     "tslib": "^2.3.0"

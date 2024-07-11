@@ -1,0 +1,16 @@
+<button nz-button nzType="primary" nzShape="circle" (click)="open()">
+  <span nz-icon nzType="profile"></span>
+</button>
+<nz-drawer
+  *ngIf="visible"
+  [nzClosable]="true"
+  [nzVisible]="visible"
+  [nzMask]="false"
+  nzPlacement="left"
+  nzTitle="Layers"
+  (nzOnClose)="close()"
+>
+  <ng-container *nzDrawerContent>
+    <nolz-lyr-tree [map]="map"></nolz-lyr-tree>
+  </ng-container>
+</nz-drawer>

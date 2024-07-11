@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LayerTreeComponent } from './layer/layer-tree/layer-tree.component';
+import { NolzLayerTreeComponent } from './layer/layer-tree/layer-tree.component';
 
 
 
@@ -8,10 +8,10 @@ import { LayerTreeComponent } from './layer/layer-tree/layer-tree.component';
   declarations: [],
   imports: [
     CommonModule,
-    LayerTreeComponent
+    NolzLayerTreeComponent
   ],
   exports: [
-    LayerTreeComponent
+    NolzLayerTreeComponent
   ]
 })
 export class TreeModule { }
